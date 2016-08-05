@@ -32,12 +32,20 @@ router.get('/', function(req, res) {
 
 // slack calculator api
 router.post("/calc", function(req, res) {
-    var expression = req.body.expression;
-    try {
-        var value = math.round(math.eval(expression), 3); 
-        res.status(201).json({"status":1, "message":"expression `" + expression + "`  calculated successfully", "value" : value});
-    } catch (err) {
-        res.status(201).json({"status":0, "message":"expression `" + expression + "`  seems to be broken. Please have a look and try again!", "value" : "NAN"});
+
+    // api auth
+    var headers = request.headers;
+    var apiKey = headers['x-igloo-apikey'];
+    if (apiKey != process.env.APIKEY) {
+        var expression = req.body.expression;
+        try {
+            var value = math.round(math.eval(expression), 3); 
+            res.status(200).json({"status":1, "message":"expression `" + expression + "`  calculated successfully", "value" : value});
+        } catch (err) {
+            res.status(500).json({"status":0, "message":"expression `" + expression + "`  seems to be broken. Please have a look and try again!", "value" : "NAN"});
+        }
+    } else {
+        res.status(400).json({"status":0, "message":"Authentication failed", "value" : "NAN"});
     }
 });
 
