@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 router.post("/calc", function(req, res) {
 
     // api auth
-    var headers = request.headers;
+    var headers = req.headers;
     var apiKey = headers['x-igloo-apikey'];
     if (apiKey != process.env.APIKEY) {
         var expression = req.body.expression;
