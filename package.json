@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zomansud/calciSlackBot/issues"
   },
-  "homepage": "https://github.com/zomansud/calciSlackBot#readme"
+  "homepage": "https://github.com/zomansud/calciSlackBot#readme",
+  "dependencies": {
+    "cool-ascii-faces": "1.3.4"
+  }
 }
