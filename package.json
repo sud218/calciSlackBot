@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/zomansud/calciSlackBot#readme",
   "dependencies": {
+    "@slack/client": "^3.5.4",
     "body-parser": "^1.15.2",
     "express": "^4.13.3",
     "mathjs": "^3.3.0"
