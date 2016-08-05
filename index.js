@@ -1,5 +1,5 @@
-var cool = require('cool-ascii-faces');
-var express = require('express');
+var cool = require('node_modules/cool-ascii-faces');
+var express = require('node_modules/express');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
