@@ -83,7 +83,7 @@ router.post("/calc/slack", function(req, res) {
             						"author_icon": "https://avatars0.githubusercontent.com/u/7766076?v=3&u=ecc19fccc2e6f1039d7e597b01064c43052fd2bb&s=140",
             						"title": "try `/calc (2.25 + 76.0) * 18` or simply `/calc 2 + 2`",
             						"text": "Supports all normal and scientific expressions! In Slack Calculator Documentation <https://slack-calc.herokuapp.com>",
-            						"color": "#7CD197"
+            						"color": "good"
         						}
     						]});
         } else {
@@ -95,7 +95,7 @@ router.post("/calc/slack", function(req, res) {
         						{
             						"pretext": expression,
             						"title": value,
-            						"color": "#7CD197"
+            						"color": "good"
         						}
     						]});
              } catch (err) {
