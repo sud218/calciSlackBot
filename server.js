@@ -122,7 +122,7 @@ router.get("calc/slack", function(req, res) {
             res.status(200).json("Slack authenticated!");
         }
     });
-}
+});
 
 // general test calc 
 router.post("/calc", function(req, res) {
