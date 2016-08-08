@@ -8,6 +8,7 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var RtmClient = require('@slack/client').RtmClient;
 var math = require('mathjs');
+var request = require('request');
 
 var app = express();
 
@@ -96,6 +97,34 @@ router.post("/calc/slack", function(req, res) {
     }
 });
 
+
+// slack Authentication
+router.get("calc/slack", function(req, res) {
+    
+    var code = req.params.code;
+    // call auth to get the token from slack
+    request({
+        url: "https://slack.com/api/oauth.access",
+        qs: {
+            client_id: process.env.SLACK_CLIENT_ID,
+            client_secret: process.env.SLACK_APIKEY,
+            code: code
+        },
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: ""
+    }, function(error, response, body) {
+        if(error) {
+            res.status(400).json("Authentication failed with Slack!");
+        } else {
+            res.status(200).json("Slack authenticated!");
+        }
+    });
+}
+
+// general test calc 
 router.post("/calc", function(req, res) {
 
     // api auth

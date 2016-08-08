@@ -22,7 +22,8 @@
     "@slack/client": "^3.5.4",
     "body-parser": "^1.15.2",
     "express": "^4.13.3",
-    "mathjs": "^3.3.0"
+    "mathjs": "^3.3.0",
+    "request": "^2.74.0"
   },
   "engines": {
     "node": "4.4.7"
