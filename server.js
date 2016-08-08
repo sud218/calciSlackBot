@@ -39,6 +39,32 @@ router.get('/', function(req, res) {
 });
 
 // slack calculator api
+// slack Authentication
+router.get("/calc/slack", function(req, res) {
+    
+    var code = req.query.code;
+    // call auth to get the token from slack
+    request({
+        url: "https://slack.com/api/oauth.access",
+        qs: {
+            client_id: process.env.SLACK_CLIENT_ID,
+            client_secret: process.env.SLACK_APIKEY,
+            code: code
+        },
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: ""
+    }, function(error, response, body) {
+        if(error) {
+            res.status(400).json("Authentication failed with Slack!");
+        } else {
+            res.status(200).json(response);
+        }
+    });
+});
+
 router.post("/calc/slack", function(req, res) {
 
     // api auth
@@ -97,32 +123,6 @@ router.post("/calc/slack", function(req, res) {
     }
 });
 
-
-// slack Authentication
-router.get("calc/slack", function(req, res) {
-    
-    var code = req.params.code;
-    // call auth to get the token from slack
-    request({
-        url: "https://slack.com/api/oauth.access",
-        qs: {
-            client_id: process.env.SLACK_CLIENT_ID,
-            client_secret: process.env.SLACK_APIKEY,
-            code: code
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: ""
-    }, function(error, response, body) {
-        if(error) {
-            res.status(400).json("Authentication failed with Slack!");
-        } else {
-            res.status(200).json(response);
-        }
-    });
-});
 
 // general test calc 
 router.post("/calc", function(req, res) {
