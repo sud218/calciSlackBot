@@ -119,7 +119,7 @@ router.get("calc/slack", function(req, res) {
         if(error) {
             res.status(400).json("Authentication failed with Slack!");
         } else {
-            res.status(200).json("Slack authenticated!");
+            res.status(200).json(response);
         }
     });
 });
