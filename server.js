@@ -73,11 +73,11 @@ router.post("/calc/slack", function(req, res) {
 
         // check if the body is `help`
         if (expression == 'help' || expression == '') {
-			res.status(200).json({"username": "calcbot",
+			res.status(200).json({"title": "*Hi!* Need to do a calculation while doing your work on Slack? Now, no need to leave slack at all!",
+                            "username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
         						{
-            						"pretext": "*Hi!* Need to do a calculation while doing your work on Slack? Now, no need to leave slack at all!",
 									"author_name": "Sudhanshu Shekhar",
             						"author_link": "https://www.linkedin.com/in/sudhanshushekhar1",
             						"author_icon": "https://avatars0.githubusercontent.com/u/7766076?v=3&u=ecc19fccc2e6f1039d7e597b01064c43052fd2bb&s=140",
@@ -90,22 +90,21 @@ router.post("/calc/slack", function(req, res) {
         } else {
              try {
                  var value = math.round(math.eval(expression), 3); 
-				 res.status(200).json({"text": expression + " = *" + value + "*" ,
+				 res.status(200).json({"text": expression ,
                             "username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
         						{
-            						"pretext": expression,
             						"title": value,
             						"color": "good"
         						}
     						]});
              } catch (err) {
-				 res.status(200).json({"username": "calcbot",
+				 res.status(200).json({"title": "`" + expression + "` seems to be broken! Would you mind having a second look and try again?",
+                            "username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
         						{
-            						"pretext": "`" + expression + "` seems to be broken! Would you mind having a second look and try again?",
             						"title": "NAN",
             						"color": "warning"
         						}
