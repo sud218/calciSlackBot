@@ -68,7 +68,7 @@ router.get("/calc/slack", function(req, res) {
 router.post("/calc/slack", function(req, res) {
 
     // api auth
-    console.log(req);
+    console.log(req.body.token);
     if (slackToken == req.body.token) {
         var expression = req.body.text;
 
