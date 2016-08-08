@@ -68,8 +68,7 @@ router.get("/calc/slack", function(req, res) {
 router.post("/calc/slack", function(req, res) {
 
     // api auth
-    console.log(req.body.token);
-    if (slackToken == req.body.token) {
+    //if (slackToken == req.body.token) {
         var expression = req.body.text;
 
         // check if the body is `help`
@@ -111,7 +110,7 @@ router.post("/calc/slack", function(req, res) {
     						]});
              }
         }
-    } else {
+    /*} else {
 				 res.status(200).json({"username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
@@ -121,7 +120,7 @@ router.post("/calc/slack", function(req, res) {
             						"color": "danger"
         						}
     						]});
-    }
+    }*/
 });
 
 
