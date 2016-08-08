@@ -73,7 +73,7 @@ router.post("/calc/slack", function(req, res) {
 
         // check if the body is `help`
         if (expression == 'help' || expression == '') {
-			res.status(200).json({"title": "*Hi!* Need to do a calculation while doing your work on Slack? Now, no need to leave slack at all!",
+			res.status(200).json({"text": "*Hi!* Need to do a calculation while doing your work on Slack? Now, no need to leave slack at all!",
                             "username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
@@ -100,7 +100,7 @@ router.post("/calc/slack", function(req, res) {
         						}
     						]});
              } catch (err) {
-				 res.status(200).json({"title": "`" + expression + "` seems to be broken! Would you mind having a second look and try again?",
+				 res.status(200).json({"text": "`" + expression + "` seems to be broken! Would you mind having a second look and try again?",
                             "username": "calcbot",
     						"mrkdwn": true,
 							"attachments": [
