@@ -6,6 +6,7 @@ An elegant command line calculator for `Slack`
 Click on [Add to Slack](http://slack-calc.herokuapp.com/) button to install to your `slack team`.
 
 ## Usage
+![Calc](https://raw.githubusercontent.com/zomansud/calciSlackBot/master/calc.png)
 
 Type `/calc` followed by any expression, normal or scientific, to evaluate.
 
